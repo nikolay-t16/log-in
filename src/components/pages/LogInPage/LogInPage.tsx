@@ -1,6 +1,6 @@
 import LogIn from "../../managers/LogIn/LogIn";
 
-export const LogInPage = () => {
+const LogInPage = () => {
     return (
         <div>
             <main>
@@ -9,5 +9,4 @@ export const LogInPage = () => {
         </div>
     )
 }
-
 export default LogInPage;
