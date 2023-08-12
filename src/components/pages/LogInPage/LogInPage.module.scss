@@ -1,14 +1,13 @@
 .root {
-  padding-top: 1px;
   min-height: 100vh;
   box-sizing: border-box;
   background-color: rgb(207, 226, 253);
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .content {
-  margin-top: 100px;
   width: 384px;
   height: 374px;
   background-color: white;
