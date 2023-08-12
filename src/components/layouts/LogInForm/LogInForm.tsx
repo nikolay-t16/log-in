@@ -5,6 +5,8 @@ import {
   ValidationResult,
 } from "../../../helpers/logIn";
 import { useState } from "react";
+import styles from "./LogInForm.module.scss";
+
 interface LogInFormParams {
   onSubmit: (email: string, password: string) => Promise<void>;
   errors: ValidationResult;
@@ -14,17 +16,20 @@ const LogInForm = ({ onSubmit, errors }: LogInFormParams) => {
 
   return (
     <div>
-      <h1>Log in!</h1>
+      <h1 className={styles.title}>Log in!</h1>
       <form>
         <FormInput
+          className={styles.input}
           value={email}
           onChange={({ target: { value } }) => {
             setEmail(value);
           }}
+          icon="email"
           name="email"
           type="email"
           placeholder="введите email"
           required
+          minLength={6}
           pattern={emailValidationPattern}
           validationMessage={errors?.email}
         />

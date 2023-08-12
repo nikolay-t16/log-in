@@ -4,12 +4,13 @@ import classNames from "classnames";
 
 interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
   validationMessage?: string;
+  icon?: "email" | "password";
 }
 
 const FormInput = ({
   validationMessage: validationMessageInit,
   className,
-  type = "text",
+  icon,
   onChange,
   ...inputProps
 }: Props) => {
@@ -31,7 +32,7 @@ const FormInput = ({
         }}
       />
       <div
-        className={classNames(styles.inputImg, styles[`inputImg--${type}`])}
+        className={classNames(styles.inputImg, styles[`inputImg--${icon}`])}
       />
       <div className={styles.underlineWrapper}>
         <div className={styles.underline} />
