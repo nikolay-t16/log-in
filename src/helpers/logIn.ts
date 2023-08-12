@@ -20,12 +20,12 @@ interface ValidationData {
 
 export type ValidationResult = ValidationData | null;
 export const validate = (email: string, password: string): ValidationResult => {
-  const emailValidationResult = validateEmail(email);
-  const passwordValidationResult = validatePassword(password);
+  const emailValidationError = validateEmail(email);
+  const passwordValidationError = validatePassword(password);
 
-  if (!emailValidationResult && !passwordValidationResult) return null;
+  if (!emailValidationError && !passwordValidationError) return null;
   return {
-    email: emailValidationResult,
-    password: passwordValidationResult,
+    email: emailValidationError,
+    password: passwordValidationError,
   };
 };
