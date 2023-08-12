@@ -1,9 +1,6 @@
 import FormInput from "../../blocks/FormInput/FormInput";
 import Button from "../../blocks/Button/Button";
-import {
-  emailValidationPattern,
-  ValidationResult,
-} from "../../../helpers/logIn";
+import { ValidationResult } from "../../../helpers/logIn";
 import { useState } from "react";
 import styles from "./LogInForm.module.scss";
 import Password from "../../blocks/Password/Password";
@@ -31,7 +28,6 @@ const LogInForm = ({ onSubmit, errors }: LogInFormParams) => {
           type="email"
           placeholder="введите email"
           required
-          pattern={emailValidationPattern}
           validationMessage={errors?.email}
         />
         <Password

@@ -1,4 +1,4 @@
-export const emailValidationPattern = "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
+const emailValidationPattern = "[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$";
 const validateEmail = (value: string) => {
   if (value.length < 1) return "обязательно поле";
   if (!value.toLowerCase().match(emailValidationPattern))
