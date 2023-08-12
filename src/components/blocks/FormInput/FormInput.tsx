@@ -1,19 +1,20 @@
 import styles from "./FormInput.module.scss";
-import React, { useEffect, useState } from "react";
+import { FC, InputHTMLAttributes, useEffect, useState } from "react";
 import classNames from "classnames";
 
-interface Props extends React.InputHTMLAttributes<HTMLInputElement> {
+export interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   validationMessage?: string;
   icon?: "email" | "password";
 }
 
-const FormInput = ({
+const FormInput: FC<FormInputProps> = ({
   validationMessage: validationMessageInit,
   className,
   icon,
   onChange,
+  children,
   ...inputProps
-}: Props) => {
+}) => {
   const [validationMessage, setValidationMessage] = useState(
     validationMessageInit
   );
@@ -37,6 +38,7 @@ const FormInput = ({
       <div className={styles.underlineWrapper}>
         <div className={styles.underline} />
       </div>
+      {children}
       {validationMessage && (
         <div className={styles.errorMessage}>{validationMessage}</div>
       )}

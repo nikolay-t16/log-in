@@ -6,6 +6,7 @@ import {
 } from "../../../helpers/logIn";
 import { useState } from "react";
 import styles from "./LogInForm.module.scss";
+import Password from "../../blocks/Password/Password";
 
 interface LogInFormParams {
   onSubmit: (email: string, password: string) => Promise<void>;
@@ -13,6 +14,7 @@ interface LogInFormParams {
 }
 const LogInForm = ({ onSubmit, errors }: LogInFormParams) => {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
     <div>
@@ -29,11 +31,23 @@ const LogInForm = ({ onSubmit, errors }: LogInFormParams) => {
           type="email"
           placeholder="введите email"
           required
-          minLength={6}
           pattern={emailValidationPattern}
           validationMessage={errors?.email}
         />
-        <FormInput validationMessage={errors?.password} />
+        <Password
+          className={styles.input}
+          value={password}
+          onChange={({ target: { value } }) => {
+            setPassword(value);
+          }}
+          icon="password"
+          name="password"
+          placeholder="введите пароль"
+          required
+          minLength={6}
+          maxLength={40}
+          validationMessage={errors?.password}
+        />
         <Button />
       </form>
     </div>
