@@ -3,14 +3,14 @@ const validateEmail = (value: string) => {
   if (value.length < 1) return "обязательно поле";
   if (!value.toLowerCase().match(emailValidationPattern))
     return "невалидный email";
-  return null;
+  return "";
 };
 
 const validatePassword = (value: string) => {
   if (value.length < 1) return "обязательно поле";
   if (value.length < 6) return "пароль должен содержать не меньше 6 символов";
   if (value.length > 40) return "пароль должен содержать не боее 40 символов";
-  return null;
+  return "";
 };
 
 interface ValidationData {
@@ -23,7 +23,7 @@ export const validate = (email: string, password: string): ValidationResult => {
   const emailValidationResult = validateEmail(email);
   const passwordValidationResult = validatePassword(password);
 
-  if (!emailValidationResult || !passwordValidationResult) return null;
+  if (!emailValidationResult && !passwordValidationResult) return null;
   return {
     email: emailValidationResult,
     password: passwordValidationResult,
