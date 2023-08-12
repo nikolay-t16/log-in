@@ -9,8 +9,8 @@ import styles from "./LogInForm.module.scss";
 import Password from "../../blocks/Password/Password";
 
 interface LogInFormParams {
-  onSubmit: (email: string, password: string) => Promise<void>;
-  errors: ValidationResult;
+  onSubmit?: (email: string, password: string) => Promise<void>;
+  errors?: ValidationResult;
 }
 const LogInForm = ({ onSubmit, errors }: LogInFormParams) => {
   const [email, setEmail] = useState("");
@@ -48,7 +48,16 @@ const LogInForm = ({ onSubmit, errors }: LogInFormParams) => {
           maxLength={40}
           validationMessage={errors?.password}
         />
-        <Button />
+        <Button
+          type="submit"
+          className={styles["input-submit"]}
+          onClick={(e) => {
+            e.preventDefault();
+            onSubmit?.(email, password);
+          }}
+        >
+          Login
+        </Button>
       </form>
     </div>
   );
