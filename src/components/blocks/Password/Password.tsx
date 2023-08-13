@@ -1,7 +1,6 @@
 import styles from "./Password.module.scss";
 import FormInput, { FormInputProps } from "../FormInput/FormInput";
 import { useState } from "react";
-import classNames from "classnames";
 
 type Props = Exclude<FormInputProps, "icon" | "type">;
 
@@ -17,12 +16,7 @@ const Password = (props: Props) => {
           checked={isChecked}
           onChange={() => setIsChecked((v) => !v)}
         />
-        <div
-          className={classNames(styles.checkbox, {
-            [styles["checkbox--visible"]]: isChecked,
-            [styles["checkbox--hidden"]]: !isChecked,
-          })}
-        />
+        <div className={styles.checkbox} />
       </label>
     </FormInput>
   );
