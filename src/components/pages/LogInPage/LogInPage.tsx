@@ -1,21 +1,10 @@
 import LogIn from "../../managers/LogIn/LogIn";
 import styles from "./LogInPage.module.scss";
-import { useState } from "react";
 import classNames from "classnames";
+import useDarkThemeSwitcher from "../../../hooks/useDarcThemeSwitcher";
 
 const LogInPage = () => {
-  const themeParamName = "isDarkTheme";
-  const [isDarkTheme, setIsDarkTheme] = useState(
-    !!localStorage.getItem(themeParamName)
-  );
-
-  const toggleTheme = () => {
-    setIsDarkTheme((v) => {
-      const newValue = !v;
-      localStorage.setItem(themeParamName, newValue ? "1" : "");
-      return newValue;
-    });
-  };
+  const { isDarkTheme, toggleTheme } = useDarkThemeSwitcher();
   return (
     <div
       className={classNames(styles.root, { [styles.darkTheme]: isDarkTheme })}
