@@ -4,15 +4,16 @@ import classNames from "classnames";
 
 export interface FormInputProps extends InputHTMLAttributes<HTMLInputElement> {
   validationMessage?: string;
-  icon?: "email" | "password";
+  label?: string;
 }
 
 const FormInput: FC<FormInputProps> = ({
   validationMessage: validationMessageInit,
+  label,
   className,
-  icon,
   onChange,
   children,
+  value,
   ...inputProps
 }) => {
   const [validationMessage, setValidationMessage] = useState(
@@ -26,6 +27,7 @@ const FormInput: FC<FormInputProps> = ({
     <label className={classNames(className, styles.root)}>
       <input
         {...inputProps}
+        value={value}
         className={styles.input}
         onChange={(event) => {
           setValidationMessage("");
@@ -33,8 +35,12 @@ const FormInput: FC<FormInputProps> = ({
         }}
       />
       <div
-        className={classNames(styles.inputImg, styles[`inputImg--${icon}`])}
-      />
+        className={classNames(styles.label, {
+          [styles["label--notEmpty"]]: !!value,
+        })}
+      >
+        {label}
+      </div>
       <div className={styles.underlineWrapper}>
         <div className={styles.underline} />
       </div>

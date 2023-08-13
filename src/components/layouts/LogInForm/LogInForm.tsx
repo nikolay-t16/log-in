@@ -23,10 +23,9 @@ const LogInForm = ({ onSubmit, errors }: LogInFormParams) => {
           onChange={({ target: { value } }) => {
             setEmail(value);
           }}
-          icon="email"
           name="email"
           type="email"
-          placeholder="введите email"
+          label="email"
           required
           validationMessage={errors?.email}
         />
@@ -36,9 +35,8 @@ const LogInForm = ({ onSubmit, errors }: LogInFormParams) => {
           onChange={({ target: { value } }) => {
             setPassword(value);
           }}
-          icon="password"
           name="password"
-          placeholder="введите пароль"
+          label="password"
           required
           minLength={6}
           maxLength={40}
