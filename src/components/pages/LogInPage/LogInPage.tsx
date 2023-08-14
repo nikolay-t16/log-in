@@ -2,6 +2,7 @@ import LogIn from "../../managers/LogIn/LogIn";
 import styles from "./LogInPage.module.scss";
 import classNames from "classnames";
 import useDarkThemeSwitcher from "../../../hooks/useDarcThemeSwitcher";
+import ThemeSwitcher from "../../blocks/ThemeSwitcher/ThemeSwitcher";
 
 const LogInPage = () => {
   const { isDarkTheme, toggleTheme } = useDarkThemeSwitcher();
@@ -9,10 +10,10 @@ const LogInPage = () => {
     <div
       className={classNames(styles.root, { [styles.darkTheme]: isDarkTheme })}
     >
-      <button
+      <ThemeSwitcher
         className={styles.themeBtn}
-        title={`${isDarkTheme ? "Light" : "Dark"} theme`}
-        onClick={toggleTheme}
+        isChecked={isDarkTheme}
+        onChange={toggleTheme}
       />
       <main className={styles.content}>
         <LogIn />
