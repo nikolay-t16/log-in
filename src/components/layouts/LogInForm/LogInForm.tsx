@@ -28,6 +28,9 @@ const LogInForm = ({ onSubmit, errors }: LogInFormParams) => {
           label="email"
           required
           validationMessage={errors?.email}
+          autoComplete="username"
+          aria-invalid={errors?.email ? "true" : "false"}
+          aria-errormessage={errors?.email}
         />
         <Password
           className={styles.input}
@@ -41,6 +44,9 @@ const LogInForm = ({ onSubmit, errors }: LogInFormParams) => {
           minLength={6}
           maxLength={40}
           validationMessage={errors?.password}
+          autoComplete="current-password"
+          aria-invalid={errors?.password ? "true" : "false"}
+          aria-errormessage={errors?.password}
         />
         <Button
           type="submit"
